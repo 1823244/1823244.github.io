@@ -10,7 +10,7 @@
 
 
 </div>
-<title>hhparser6</title>
+<title>hhparser6-home</title>
 </head>
 
 <body>
@@ -21,28 +21,96 @@
 <p></p>
 Цель проекта - изучить и получить навык работы с
 <p></p>
+места в проекте и здесь будут отмечены хэштэгами, например 
+
 java core
 <p></p>
+
+generics
+<p></p>
+
+exceptions
+<p></p>
+
 collections
 <p></p>
+
 concurrency
 <p></p>
+
 lambdas
 <p></p>
-streams
+
+<h3>streams</h3>
 <p></p>
-spring framework
+<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/stream/package-summary.html">official docs java 17</a>
+<br>
+Список методов Interface Stream
+<br>
+https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/stream/Stream.html
+<br>
+
+по порядку
+<br><h4>
+boolean allMatch(Predicate&lt;? super T&gt; predicate)
+</h4>
+
+Returns whether all elements of this stream match the provided predicate.
+<br>
+место в проекте
+<br>
+//#learningjava_streams_allmatch
+<br>
+
+<pre>
+  class ProjectService
+  public void searchAllProjects(User user) {
+...
+boolean checkAllNamesAreNotEmpty = projects.stream()
+    .allMatch(
+      (p)->!p.getName().equals("")
+    );
+if (!checkAllNamesAreNotEmpty) {
+    throw new RuntimeException("At least one project has no name!");
+}
+</pre>
+
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+
+
 <p></p>
+<h3>jdbc</h3>
+<p></p>
+
+<h3>spring framework</h3>
+(https://spring.io/projects/spring-framework)
+<p></p>
+
 spring core
 <p></p>
+
 spring boot
 <p></p>
+
 spring mvc
 <p></p>
+
+spring jdbc template
+<p></p>
+
 spring data jpa / hibernate
 <p></p>
+
 srping security
 <p></p>
+
 <p></p>
 <p></p>
 <p></p>
@@ -51,6 +119,8 @@ srping security
 
 
 <h3>Architecture Decission List<h3>
+  <p></p>
+  <a href="adl.html">adl.html</a>
 
 <p></p>
 <p></p>
