@@ -49,32 +49,90 @@ lambdas
 <br>
 https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/stream/Stream.html
 <br>
-
+<p></p>
 по порядку
-<br><h4>
+
+<h4>
 boolean allMatch(Predicate&lt;? super T&gt; predicate)
 </h4>
 
 Returns whether all elements of this stream match the provided predicate.
-<br>
+<p></p>
 место в проекте
 <br>
-//#learningjava_streams_allmatch
+#learningjava_streams_allmatch
 <br>
 
 <pre>
   class ProjectService
   public void searchAllProjects(User user) {
 ...
-boolean checkAllNamesAreNotEmpty = projects.stream()
-    .allMatch(
-      (p)->!p.getName().equals("")
-    );
-if (!checkAllNamesAreNotEmpty) {
-    throw new RuntimeException("At least one project has no name!");
-}
+    boolean allNamesAreNotEmpty = projects.stream()
+        .allMatch(
+          (p)->!p.getName().equals("")
+        );
+    if (!allNamesAreNotEmpty) {
+      throw new RuntimeException(
+          "java.util.Stream::allMatch: At least one project has no name!");
+    }
+...
 </pre>
+Пока нет валидации и можно создать проект без имени, увидим такую ошибку
+<br>
+<i>ERROR .ProjectService   : java.util.Stream::allMatch: At least one project has NO name!</i>
+<br>
 
+
+<h4>boolean anyMatch(Predicate&lt;? super T&gt; predicate)</h4>
+
+Returns whether any elements of this stream match the provided predicate.
+<p></p>
+место в проекте
+<br>
+#learningjava_streams_anymatch
+<br>
+<pre>
+  class ProjectService
+  public void searchAllProjects(User user) {
+...
+  boolean anyNameIsNotEmpty = projects.stream()
+    .anyMatch((p)->!p.getName().equals(""));
+  if (!anyNameIsNotEmpty) {
+      throw new RuntimeException(
+        "java.util.Stream::anyMatch: At least one project has name!");
+  }
+...
+</pre>
+Пока нет валидации и можно создать проект без имени, увидим сообщение, если хотя бы один проект имеет имя
+<br>
+<i>INFO .ProjectService   : java.util.Stream::anyMatch: At least on project has a name</i>
+<br>
+<h4>static &lt;T&gt; Stream.Builder&lt;T&gt; builder()</h4>
+
+Returns a builder for a Stream.
+<br>
+This allows the creation of a Stream by generating elements individually and adding them to the Builder (without the copying overhead that comes from using an ArrayList as a temporary buffer.) 
+<p></p>
+<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/stream/Stream.Builder.html">
+  https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/stream/Stream.Builder.html
+</a>
+<br>
+место в проекте
+<br>
+#learningjava_streams_builder
+
+<h4>
+  &lt;R&gt; R collect(<br>
+    Supplier&lt;R&gt; supplier, <br>
+    BiConsumer&lt;R,? super T&gt; <br>
+    accumulator, BiConsumer&lt;R,R&gt; combiner)
+</h4>
+
+Performs a mutable reduction operation on the elements of this stream.
+<p></p>
+место в проекте
+<br>
+#learningjava_streams_collect
 <br>
 <br>
 <br>
